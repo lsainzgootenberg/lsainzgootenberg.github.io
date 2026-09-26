@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Léa Sainz-Gootenberg — Radio &amp; Writing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12181f;
+    --panel:#1a222c;
+    --text:#edf1f4;
+    --muted:#8fa0ab;
+    --accent:#e2a33e;
+    --rule:#2a3542;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--text);}
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  header{
+    padding:28px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid var(--rule);
+  }
+  .mark{
+    font-family:'Newsreader',serif;
+    font-size:1.05rem;
+    letter-spacing:0.02em;
+  }
+  nav{display:flex;gap:28px;}
+  nav a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:0.92rem;
+  }
+  nav a:hover{color:var(--accent);}
+
+  .hero{
+    padding:72px 0 56px;
+    border-bottom:1px solid var(--rule);
+  }
+  .dial{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:28px;
+  }
+  .dial-track{
+    position:relative;
+    flex:1;
+    height:2px;
+    background:var(--rule);
+  }
+  .dial-track::before,
+  .dial-track::after{
+    content:'';
+    position:absolute;
+    top:-4px;
+    width:1px;
+    height:10px;
+    background:var(--rule);
+  }
+  .dial-track::before{left:0;}
+  .dial-track::after{right:0;}
+  .needle{
+    position:absolute;
+    top:-6px;
+    width:2px;
+    height:14px;
+    background:var(--accent);
+    left:0%;
+    animation:tune 1.4s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  @keyframes tune{
+    0%{left:2%;}
+    100%{left:88.5%;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .needle{animation:none;left:88.5%;}
+  }
+  .freq{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:0.85rem;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  .freq strong{color:var(--accent);font-weight:500;}
+
+  h1{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:clamp(2.2rem,6vw,3.4rem);
+    line-height:1.08;
+    max-width:11ch;
+  }
+  .tagline{
+    margin-top:20px;
+    max-width:46ch;
+    color:var(--muted);
+    font-size:1.05rem;
+  }
+
+  section{
+    padding:56px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  section:last-of-type{border-bottom:none;}
+  .section-label{
+    font-size:0.82rem;
+    color:var(--muted);
+    margin-bottom:32px;
+  }
+
+  .piece{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:20px;
+    padding:24px 0;
+    border-top:1px solid var(--rule);
+  }
+  .piece:first-child{border-top:none;}
+  .piece-freq{
+    font-family:'Newsreader',serif;
+    font-style:italic;
+    color:var(--muted);
+    font-size:0.95rem;
+    padding-top:2px;
+  }
+  .piece h3{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:1.25rem;
+    margin-bottom:6px;
+  }
+  .piece .role{
+    color:var(--accent);
+    font-size:0.85rem;
+    margin-bottom:10px;
+  }
+  .piece p{
+    color:var(--muted);
+    font-size:0.96rem;
+    max-width:56ch;
+  }
+
+  .about p{
+    max-width:58ch;
+    color:var(--muted);
+    margin-bottom:16px;
+  }
+  .about p:last-child{margin-bottom:0;}
+  .about strong{color:var(--text);font-weight:500;}
+
+  .contact-line{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-top:8px;
+  }
+  .contact-line a{
+    color:var(--accent);
+    text-decoration:none;
+    font-size:1.1rem;
+    border-bottom:1px solid transparent;
+  }
+  .contact-line a:hover{border-bottom-color:var(--accent);}
+
+  footer{
+    padding:28px 0 48px;
+    color:var(--muted);
+    font-size:0.82rem;
+  }
+
+  @media (max-width:520px){
+    .piece{grid-template-columns:44px 1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="mark">Léa Sainz-Gootenberg</span>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="dial">
+      <div class="dial-track"><div class="needle"></div></div>
+      <span class="freq">tuned to <strong>88.5</strong> fm</span>
+    </div>
+    <h1>Radio producer &amp; writer, tuned to overlooked stories.</h1>
+    <p class="tagline">Chicago-based. I make interview-driven audio and write about the people and images that don't usually get the mic.</p>
+  </div>
+
+  <section id="work">
+    <div class="section-label">Work</div>
+
+    <div class="piece">
+      <div class="piece-freq">01</div>
+      <div>
+        <h3>Finders-Keepers Radio</h3>
+        <div class="role">DJ / Radio Producer · 2022–2026</div>
+        <p>A weekly live-broadcast interview project, produced for four years across FM radio and YouTube.</p>
+      </div>
+    </div>
+
+    <div class="piece">
+      <div class="piece-freq">02</div>
+      <div>
+        <h3>WBEZ Chicago</h3>
+        <div class="role">Talk Shows Intern · 2026</div>
+        <p>Produced segments for <em>In the Loop</em> and <em>Say More</em> — guest research, script editing, and call screening for WBEZ's daily talk programs.</p>
+      </div>
+    </div>
+
+    <div class="piece">
+      <div class="piece-freq">03</div>
+      <div>
+        <h3>WHPK Chicago</h3>
+        <div class="role">Station Manager &amp; Booking Director · 2025–2026</div>
+        <p>Led one of the country's oldest community radio stations through 100+ volunteers and weekly operations, and booked and produced over 20 on-air performances.</p>
+      </div>
+    </div>
+
+    <div class="piece">
+      <div class="piece-freq">04</div>
+      <div>
+        <h3>Ancient Americas, Appropriated</h3>
+        <div class="role">Essay Contributor · Winter 2024</div>
+        <p>An essay on Tatiana Parcero's <em>Cartografía Interior #35</em>, published as part of a UIC digital humanities project on Pre-Columbian art.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-label">About</div>
+    <div class="about">
+      <p>I'm a recent graduate of the University of Chicago, where I studied <strong>Anthropology</strong> with honors and minored in English and Creative Writing. My work moves between audio production and writing — oral history interviews, live radio, and cultural criticism.</p>
+      <p>I was a <strong>Mellon Mays Undergraduate Fellow</strong>, and I've also worked with asylum-seeking and refugee-status youth through oral history and arts programming. I'm fluent in Spanish and conversational in French and Japanese.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <div class="contact-line">
+      <a href="mailto:lsainzgootenberg@gmail.com">lsainzgootenberg@gmail.com</a>
+    </div>
+  </section>
+
+  <footer>
+    Chicago, IL
+  </footer>
+
+</div>
+</body>
+</html>
