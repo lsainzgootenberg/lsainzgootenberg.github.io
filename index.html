@@ -9,12 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#12181f;
-    --panel:#1a222c;
-    --text:#edf1f4;
-    --muted:#8fa0ab;
-    --accent:#e2a33e;
-    --rule:#2a3542;
+    --bg:#ffffff;
+    --panel:#f6f7f8;
+    --text:#161c22;
+    --muted:#5c6770;
+    --accent:#b5761a;
+    --rule:#e2e5e9;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
@@ -40,8 +40,9 @@
   }
   .mark{
     font-family:'Newsreader',serif;
-    font-size:1.05rem;
-    letter-spacing:0.02em;
+    font-weight:500;
+    font-size:2rem;
+    letter-spacing:0.01em;
   }
   nav{display:flex;gap:28px;}
   nav a{
@@ -114,6 +115,69 @@
     max-width:46ch;
     color:var(--muted);
     font-size:1.05rem;
+  }
+
+  .project-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+    margin-top:48px;
+  }
+  .project-tile{
+    position:relative;
+    display:block;
+    aspect-ratio:4/5;
+    border-radius:4px;
+    overflow:hidden;
+    text-decoration:none;
+    background-size:cover;
+    background-position:center;
+    isolation:isolate;
+  }
+  .project-tile::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,.65) 0%, rgba(0,0,0,.05) 45%, rgba(0,0,0,0) 70%);
+    z-index:1;
+  }
+  .project-tile img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .project-tile .tile-label{
+    position:absolute;
+    left:16px;
+    right:16px;
+    bottom:14px;
+    z-index:2;
+    color:#fff;
+  }
+  .project-tile .tile-title{
+    font-family:'Newsreader',serif;
+    font-size:1.05rem;
+    font-weight:500;
+    line-height:1.2;
+  }
+  .project-tile .tile-role{
+    font-size:0.78rem;
+    opacity:0.85;
+    margin-top:2px;
+  }
+  .project-tile{
+    transition:transform .35s ease;
+  }
+  .project-tile:hover{
+    transform:translateY(-3px);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .project-tile{transition:none;}
+  }
+  @media (max-width:520px){
+    .project-grid{grid-template-columns:1fr 1fr;gap:10px;}
   }
 
   section{
@@ -210,14 +274,39 @@
       <div class="dial-track"><div class="needle"></div></div>
       <span class="freq">tuned to <strong>88.5</strong> fm</span>
     </div>
-    <h1>Radio producer &amp; writer, tuned to overlooked stories.</h1>
-    <p class="tagline">Chicago-based. I make interview-driven audio and write about the people and images that don't usually get the mic.</p>
+    <!-- Swap each background-image url() below with your own photo for that project. -->
+    <div class="project-grid">
+      <a class="project-tile" href="#finders-keepers" style="background-image:linear-gradient(160deg,#3a3128,#12181f), url('');background-color:#2a2420;">
+        <div class="tile-label">
+          <div class="tile-title">Finders-Keepers Radio</div>
+          <div class="tile-role">DJ / Radio Producer</div>
+        </div>
+      </a>
+      <a class="project-tile" href="#wbez" style="background-image:linear-gradient(160deg,#232b33,#12181f), url('');background-color:#1e252c;">
+        <div class="tile-label">
+          <div class="tile-title">WBEZ Chicago</div>
+          <div class="tile-role">Talk Shows Intern</div>
+        </div>
+      </a>
+      <a class="project-tile" href="#whpk" style="background-image:linear-gradient(160deg,#2c2420,#12181f), url('');background-color:#241e1a;">
+        <div class="tile-label">
+          <div class="tile-title">WHPK Chicago</div>
+          <div class="tile-role">Station Manager &amp; Booking Director</div>
+        </div>
+      </a>
+      <a class="project-tile" href="#essay" style="background-image:linear-gradient(160deg,#26292c,#12181f), url('');background-color:#1e2124;">
+        <div class="tile-label">
+          <div class="tile-title">Ancient Americas, Appropriated</div>
+          <div class="tile-role">Essay Contributor</div>
+        </div>
+      </a>
+    </div>
   </div>
 
   <section id="work">
     <div class="section-label">Work</div>
 
-    <div class="piece">
+    <div class="piece" id="finders-keepers">
       <div class="piece-freq">01</div>
       <div>
         <h3>Finders-Keepers Radio</h3>
@@ -226,7 +315,7 @@
       </div>
     </div>
 
-    <div class="piece">
+    <div class="piece" id="wbez">
       <div class="piece-freq">02</div>
       <div>
         <h3>WBEZ Chicago</h3>
@@ -235,7 +324,7 @@
       </div>
     </div>
 
-    <div class="piece">
+    <div class="piece" id="whpk">
       <div class="piece-freq">03</div>
       <div>
         <h3>WHPK Chicago</h3>
@@ -244,7 +333,7 @@
       </div>
     </div>
 
-    <div class="piece">
+    <div class="piece" id="essay">
       <div class="piece-freq">04</div>
       <div>
         <h3>Ancient Americas, Appropriated</h3>
