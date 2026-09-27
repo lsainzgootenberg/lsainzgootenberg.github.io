@@ -27,7 +27,7 @@
   }
   a{color:var(--text);}
   .wrap{
-    max-width:1000px;
+    max-width:1200px;
     margin:0 auto;
     padding:0 24px;
   }
@@ -67,47 +67,99 @@
     font-weight:500;
     font-size:clamp(2rem,5vw,2.8rem);
     margin-top:24px;
+    margin-bottom:8px;
   }
 
-  .piece{
-    display:grid;
-    grid-template-columns:64px 1fr;
-    gap:20px;
-    padding:24px 0;
+  /* Sidebar + gallery layout */
+  .photo-layout{
+    display:flex;
+    gap:56px;
+    margin-top:32px;
+    align-items:flex-start;
+  }
+
+  .photo-sidebar{
+    width:200px;
+    flex-shrink:0;
+    position:sticky;
+    top:32px;
+  }
+  .photo-sidebar ul{
+    list-style:none;
+  }
+  .photo-sidebar li{
     border-top:1px solid var(--rule);
   }
-  .piece:first-child{border-top:none;margin-top:40px;}
-  .piece-freq{
-    font-family:'Newsreader',serif;
-    font-style:italic;
-    color:var(--muted);
+  .photo-sidebar li:first-child{
+    border-top:none;
+  }
+  .photo-sidebar button{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    font-family:'IBM Plex Sans',sans-serif;
     font-size:0.95rem;
-    padding-top:2px;
+    color:var(--muted);
+    padding:14px 0;
+    cursor:pointer;
   }
-  .piece h3{
-    font-family:'Newsreader',serif;
-    font-weight:500;
-    font-size:1.25rem;
-    margin-bottom:6px;
-  }
-  .piece h3 a{
-    text-decoration:none;
+  .photo-sidebar button:hover{
     color:var(--text);
   }
-  .piece h3 a:hover{color:var(--accent);}
-  .piece .role{
+  .photo-sidebar button.active{
     color:var(--accent);
-    font-size:0.85rem;
+    font-weight:500;
+  }
+
+  .photo-main{
+    flex:1;
+    min-width:0;
+  }
+
+  .gallery-panel{
+    display:none;
+  }
+  .gallery-panel.active{
+    display:block;
+  }
+
+  .gallery-description{
+    max-width:60ch;
+    margin-bottom:36px;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--rule);
+  }
+  .gallery-description h2{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:1.6rem;
     margin-bottom:10px;
   }
-  .piece p{
+  .gallery-description p{
     color:var(--muted);
-    font-size:0.96rem;
-    max-width:56ch;
+    font-size:0.97rem;
+  }
+  .gallery-description .placeholder-note{
+    font-style:italic;
+    color:#a8b0b6;
+  }
+
+  .gallery-images{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+  }
+  .gallery-images img{
+    display:block;
+    max-width:100%;
+    height:auto;
+    width:auto;
+    max-height:85vh;
   }
 
   .placeholder-note{
-    margin-top:40px;
     font-style:italic;
     color:#a8b0b6;
   }
@@ -116,11 +168,31 @@
     padding:48px 0 48px;
     color:var(--muted);
     font-size:0.82rem;
-    margin-top:40px;
+    margin-top:56px;
   }
 
-  @media (max-width:520px){
-    .piece{grid-template-columns:44px 1fr;}
+  @media (max-width:760px){
+    .photo-layout{
+      flex-direction:column;
+      gap:28px;
+    }
+    .photo-sidebar{
+      width:100%;
+      position:static;
+      overflow-x:auto;
+    }
+    .photo-sidebar ul{
+      display:flex;
+      gap:20px;
+    }
+    .photo-sidebar li{
+      border-top:none;
+      white-space:nowrap;
+    }
+    .photo-sidebar button{
+      padding:6px 0;
+      width:auto;
+    }
   }
 </style>
 </head>
@@ -138,12 +210,91 @@
 
   <h1 class="title">Photography</h1>
 
-  <p class="placeholder-note">[Add your photography projects here.]</p>
+  <div class="photo-layout">
+    <nav class="photo-sidebar">
+      <ul>
+        <li><button class="proj-btn active" data-target="proj-10805">10805</button></li>
+        <li><button class="proj-btn" data-target="proj-eclipsed">Eclipsed</button></li>
+        <li><button class="proj-btn" data-target="proj-portraits">Portraits, 2021&ndash;2026</button></li>
+      </ul>
+    </nav>
+
+    <div class="photo-main">
+
+      <div class="gallery-panel active" id="proj-10805">
+        <div class="gallery-description">
+          <h2>10805</h2>
+          <p style="font-style:italic;">August 2024, Portra 400</p>
+          <blockquote style="font-style:italic;margin-top:16px;">
+            <p>"The past is like the scene of a crime: if the deed itself is irrecoverable, its traces may still remain. From these traces, markers that point towards a past presence, to something that has happened in this place, a (re)construction, if not a simulacrum, of the event can be pieced together."</p>
+            <p style="margin-top:8px;">&ndash; Annette Kuhn, <em>Family Secrets</em></p>
+          </blockquote>
+          <p style="margin-top:16px;">Color photography in the mid 20th-century created the mass-market point-and-shoot family portrait; I conceived of &lsquo;10805&rsquo; as another kind of family archive. This is my attempt to make legible a &ldquo;living image of a dead thing&rdquo;, in the words of Roland Barthes. The feeling of a photograph that holds the essence of a loved one is wholly subjective, so I attempted to create a portrait of my grandma through her home after her death.</p>
+          <p style="margin-top:16px;">The goal was to make these feelings legible to others through the absence of a person. I hoped these images would unsettle the stillness of the home in its final moments.</p>
+          <p style="margin-top:16px;">In my last few days in the house before it was sold, I followed the rhythm and the movement of the space. The rocking chair in motion through the window, the handmade photo collages, her glamour, knickknacks, lipstick tubes. Shoes still positioned by the foot of the bed, ready to be worn. Lights still on and laundry left hanging.</p>
+        </div>
+        <div class="gallery-images">
+          <img src="images/photography/10805/10805-01.jpg" alt="10805, image 1">
+          <img src="images/photography/10805/10805-02.jpg" alt="10805, image 2">
+          <img src="images/photography/10805/10805-03.jpg" alt="10805, image 3">
+          <img src="images/photography/10805/10805-04.jpg" alt="10805, image 4">
+          <img src="images/photography/10805/10805-05.jpg" alt="10805, image 5">
+          <img src="images/photography/10805/10805-06.jpg" alt="10805, image 6">
+          <img src="images/photography/10805/10805-07.jpg" alt="10805, image 7">
+          <img src="images/photography/10805/10805-08.jpg" alt="10805, image 8">
+          <img src="images/photography/10805/10805-09.jpg" alt="10805, image 9">
+          <img src="images/photography/10805/10805-10.jpg" alt="10805, image 10">
+          <img src="images/photography/10805/10805-11.jpg" alt="10805, image 11">
+          <img src="images/photography/10805/10805-12.jpg" alt="10805, image 12">
+          <img src="images/photography/10805/10805-13.jpg" alt="10805, image 13">
+          <img src="images/photography/10805/10805-14.jpg" alt="10805, image 14">
+          <img src="images/photography/10805/10805-15.jpg" alt="10805, image 15">
+          <img src="images/photography/10805/10805-16.jpg" alt="10805, image 16">
+          <img src="images/photography/10805/10805-17.jpg" alt="10805, image 17">
+          <img src="images/photography/10805/10805-18.jpg" alt="10805, image 18">
+          <img src="images/photography/10805/10805-19.jpg" alt="10805, image 19">
+          <img src="images/photography/10805/10805-20.jpg" alt="10805, image 20">
+        </div>
+      </div>
+
+      <div class="gallery-panel" id="proj-eclipsed">
+        <div class="gallery-description">
+          <h2>Eclipsed</h2>
+          <p class="placeholder-note">[Add a description of this project here.]</p>
+        </div>
+        <div class="gallery-images">
+          <p class="placeholder-note">[Send over the photos for this project and I'll drop them in, full-size, in a scrollable column like this.]</p>
+        </div>
+      </div>
+
+      <div class="gallery-panel" id="proj-portraits">
+        <div class="gallery-description">
+          <h2>Portraits, 2021&ndash;2026</h2>
+          <p class="placeholder-note">[Add a description of this project here.]</p>
+        </div>
+        <div class="gallery-images">
+          <p class="placeholder-note">[Send over the photos for this project and I'll drop them in, full-size, in a scrollable column like this.]</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <footer>
     Chicago, IL
   </footer>
 
 </div>
+
+<script>
+  document.querySelectorAll('.proj-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.proj-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.gallery-panel').forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.target).classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
