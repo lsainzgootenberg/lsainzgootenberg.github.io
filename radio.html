@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radio — Léa Sainz-Gootenberg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --panel:#f6f7f8;
+    --text:#161c22;
+    --muted:#5c6770;
+    --accent:#b5761a;
+    --rule:#e2e5e9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--text);}
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  header{
+    padding:28px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid var(--rule);
+  }
+  .mark{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:2rem;
+    letter-spacing:0.01em;
+    text-decoration:none;
+    color:var(--text);
+  }
+  nav a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:0.92rem;
+  }
+  nav a:hover{color:var(--accent);}
+
+  .back-link{
+    display:inline-block;
+    margin:32px 0 0;
+    color:var(--muted);
+    text-decoration:none;
+    font-size:0.9rem;
+  }
+  .back-link:hover{color:var(--accent);}
+
+  h1.title{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:clamp(2rem,5vw,2.8rem);
+    margin-top:24px;
+  }
+
+  .piece{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:20px;
+    padding:24px 0;
+    border-top:1px solid var(--rule);
+  }
+  .piece:first-child{border-top:none;margin-top:40px;}
+  .piece-freq{
+    font-family:'Newsreader',serif;
+    font-style:italic;
+    color:var(--muted);
+    font-size:0.95rem;
+    padding-top:2px;
+  }
+  .piece h3{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:1.25rem;
+    margin-bottom:6px;
+  }
+  .piece h3 a{
+    text-decoration:none;
+    color:var(--text);
+  }
+  .piece h3 a:hover{color:var(--accent);}
+  .piece .role{
+    color:var(--accent);
+    font-size:0.85rem;
+    margin-bottom:10px;
+  }
+  .piece p{
+    color:var(--muted);
+    font-size:0.96rem;
+    max-width:56ch;
+  }
+
+  .placeholder-note{
+    margin-top:40px;
+    font-style:italic;
+    color:#a8b0b6;
+  }
+
+  footer{
+    padding:48px 0 48px;
+    color:var(--muted);
+    font-size:0.82rem;
+    margin-top:40px;
+  }
+
+  @media (max-width:520px){
+    .piece{grid-template-columns:44px 1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="mark" href="index.html">Léa Sainz-Gootenberg</a>
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <a class="back-link" href="index.html">&larr; Back to all categories</a>
+
+  <h1 class="title">Radio</h1>
+
+  <div class="piece">
+    <div class="piece-freq">01</div>
+    <div>
+      <h3><a href="finders-keepers.html">Finders-Keepers Radio</a></h3>
+      <div class="role">DJ / Radio Producer &middot; 2022&ndash;2026</div>
+      <p>A weekly live-broadcast interview project, produced for four years across FM radio and YouTube.</p>
+    </div>
+  </div>
+
+  <div class="piece">
+    <div class="piece-freq">02</div>
+    <div>
+      <h3>WBEZ Chicago</h3>
+      <div class="role">Talk Shows Intern &middot; 2026</div>
+      <p>Produced segments for <em>In the Loop</em> and <em>Say More</em> &mdash; guest research, script editing, and call screening for WBEZ's daily talk programs.</p>
+    </div>
+  </div>
+
+  <div class="piece">
+    <div class="piece-freq">03</div>
+    <div>
+      <h3>WHPK Chicago</h3>
+      <div class="role">Station Manager &amp; Booking Director &middot; 2025&ndash;2026</div>
+      <p>Led one of the country's oldest community radio stations through 100+ volunteers and weekly operations, and booked and produced over 20 on-air performances.</p>
+    </div>
+  </div>
+
+  <footer>
+    Chicago, IL
+  </footer>
+
+</div>
+</body>
+</html>

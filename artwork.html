@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Other Art — Léa Sainz-Gootenberg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --panel:#f6f7f8;
+    --text:#161c22;
+    --muted:#5c6770;
+    --accent:#b5761a;
+    --rule:#e2e5e9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--text);}
+  .wrap{
+    max-width:1000px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  header{
+    padding:28px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid var(--rule);
+  }
+  .mark{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:2rem;
+    letter-spacing:0.01em;
+    text-decoration:none;
+    color:var(--text);
+  }
+  nav a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:0.92rem;
+  }
+  nav a:hover{color:var(--accent);}
+
+  .back-link{
+    display:inline-block;
+    margin:32px 0 0;
+    color:var(--muted);
+    text-decoration:none;
+    font-size:0.9rem;
+  }
+  .back-link:hover{color:var(--accent);}
+
+  h1.title{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:clamp(2rem,5vw,2.8rem);
+    margin-top:24px;
+  }
+
+  .piece{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:20px;
+    padding:24px 0;
+    border-top:1px solid var(--rule);
+  }
+  .piece:first-child{border-top:none;margin-top:40px;}
+  .piece-freq{
+    font-family:'Newsreader',serif;
+    font-style:italic;
+    color:var(--muted);
+    font-size:0.95rem;
+    padding-top:2px;
+  }
+  .piece h3{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:1.25rem;
+    margin-bottom:6px;
+  }
+  .piece h3 a{
+    text-decoration:none;
+    color:var(--text);
+  }
+  .piece h3 a:hover{color:var(--accent);}
+  .piece .role{
+    color:var(--accent);
+    font-size:0.85rem;
+    margin-bottom:10px;
+  }
+  .piece p{
+    color:var(--muted);
+    font-size:0.96rem;
+    max-width:56ch;
+  }
+
+  .placeholder-note{
+    margin-top:40px;
+    font-style:italic;
+    color:#a8b0b6;
+  }
+
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:40px;
+  }
+  .gallery a{
+    display:block;
+    aspect-ratio:1;
+    overflow:hidden;
+    border-radius:3px;
+  }
+  .gallery img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .3s ease, opacity .3s ease;
+  }
+  .gallery a:hover img{
+    transform:scale(1.03);
+    opacity:0.92;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .gallery img{transition:none;}
+  }
+  @media (max-width:640px){
+    .gallery{grid-template-columns:repeat(2,1fr);gap:8px;}
+  }
+
+  footer{
+    padding:48px 0 48px;
+    color:var(--muted);
+    font-size:0.82rem;
+    margin-top:40px;
+  }
+
+  @media (max-width:520px){
+    .piece{grid-template-columns:44px 1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="mark" href="index.html">Léa Sainz-Gootenberg</a>
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <a class="back-link" href="index.html">&larr; Back to all categories</a>
+
+  <h1 class="title">Other Art</h1>
+
+  <div class="gallery">
+    <a href="images/artwork/art-01.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-01.jpg" alt="Artwork piece 1"></a>
+    <a href="images/artwork/art-02.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-02.jpg" alt="Artwork piece 2"></a>
+    <a href="images/artwork/art-03.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-03.jpg" alt="Artwork piece 3"></a>
+    <a href="images/artwork/art-04.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-04.jpg" alt="Artwork piece 4"></a>
+    <a href="images/artwork/art-05.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-05.jpg" alt="Artwork piece 5"></a>
+    <a href="images/artwork/art-06.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-06.jpg" alt="Artwork piece 6"></a>
+    <a href="images/artwork/art-07.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-07.jpg" alt="Artwork piece 7"></a>
+    <a href="images/artwork/art-08.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-08.jpg" alt="Artwork piece 8"></a>
+    <a href="images/artwork/art-09.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-09.jpg" alt="Artwork piece 9"></a>
+    <a href="images/artwork/art-10.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-10.jpg" alt="Artwork piece 10"></a>
+    <a href="images/artwork/art-11.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-11.jpg" alt="Artwork piece 11"></a>
+    <a href="images/artwork/art-12.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-12.jpg" alt="Artwork piece 12"></a>
+    <a href="images/artwork/art-13.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-13.jpg" alt="Artwork piece 13"></a>
+    <a href="images/artwork/art-14.jpg" target="_blank" rel="noopener"><img src="images/artwork/art-14.jpg" alt="Artwork piece 14"></a>
+  </div>
+
+  <footer>
+    Chicago, IL
+  </footer>
+
+</div>
+</body>
+</html>
