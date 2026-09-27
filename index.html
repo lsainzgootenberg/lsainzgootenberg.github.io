@@ -225,13 +225,13 @@
 
   .about{
     display:grid;
-    grid-template-columns:200px 1fr;
-    gap:32px;
+    grid-template-columns:1fr 340px;
+    gap:40px;
     align-items:start;
   }
   .about-photo{
-    border-radius:6px;
     overflow:hidden;
+    order:2;
   }
   .about-photo img{
     width:100%;
@@ -247,7 +247,7 @@
 
   @media (max-width:600px){
     .about{grid-template-columns:1fr;}
-    .about-photo{max-width:200px;}
+    .about-photo{max-width:100%;order:0;}
   }
 
   .contact-line{
@@ -325,11 +325,19 @@
         <img src="images/about.png" alt="Léa Sainz-Gootenberg">
       </div>
       <div>
-        <p> I'm Léa Sainz-Gootenberg. I grew up in Brooklyn, NY and I went to the University of Chicago, where I got my B.A. in Anthropology with honors and minored in English and Creative Writing. My background in social anthropology, photography, and urbanism guides my writing and audio work. I've worked on audio projects, in the nonprofit arts world, and in the newsroom. Samples of my work are on my website, so feel free to explore. I'm interested in working with you! I live in Chicago, IL. Shoot me an email at <a href="mailto:lsainzgootenberg@gmail.com">lsainzgootenberg@gmail.com</a> </p>
+        <p>I'm a recent graduate of the University of Chicago, where I studied <strong>Anthropology</strong> with honors and minored in English and Creative Writing. My work moves between audio production and writing — oral history interviews, live radio, and cultural criticism.</p>
+        <p>I was a <strong>Mellon Mays Undergraduate Fellow</strong>, and I've also worked with asylum-seeking and refugee-status youth through oral history and arts programming. I'm fluent in Spanish and conversational in French and Japanese.</p>
       </div>
     </div>
   </section>
-  
+
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <div class="contact-line">
+      <a href="mailto:lsainzgootenberg@gmail.com">lsainzgootenberg@gmail.com</a>
+    </div>
+  </section>
+
   <footer>
     Chicago, IL
   </footer>
