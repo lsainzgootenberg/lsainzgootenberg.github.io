@@ -223,6 +223,20 @@
     max-width:56ch;
   }
 
+  .about{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:32px;
+    align-items:start;
+  }
+  .about-photo{
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .about-photo img{
+    width:100%;
+    display:block;
+  }
   .about p{
     max-width:58ch;
     color:var(--muted);
@@ -230,6 +244,11 @@
   }
   .about p:last-child{margin-bottom:0;}
   .about strong{color:var(--text);font-weight:500;}
+
+  @media (max-width:600px){
+    .about{grid-template-columns:1fr;}
+    .about-photo{max-width:200px;}
+  }
 
   .contact-line{
     display:flex;
@@ -302,8 +321,13 @@
   <section id="about">
     <div class="section-label">About</div>
     <div class="about">
-      <p>I'm a recent graduate of the University of Chicago, where I studied <strong>Anthropology</strong> with honors and minored in English and Creative Writing. My work moves between audio production and writing — oral history interviews, live radio, and cultural criticism.</p>
-      <p>I was a <strong>Mellon Mays Undergraduate Fellow</strong>, and I've also worked with asylum-seeking and refugee-status youth through oral history and arts programming. I'm fluent in Spanish and conversational in French and Japanese.</p>
+      <div class="about-photo">
+        <img src="images/about.png" alt="Léa Sainz-Gootenberg">
+      </div>
+      <div>
+        <p>I'm a recent graduate of the University of Chicago, where I studied <strong>Anthropology</strong> with honors and minored in English and Creative Writing. My work moves between audio production and writing — oral history interviews, live radio, and cultural criticism.</p>
+        <p>I was a <strong>Mellon Mays Undergraduate Fellow</strong>, and I've also worked with asylum-seeking and refugee-status youth through oral history and arts programming. I'm fluent in Spanish and conversational in French and Japanese.</p>
+      </div>
     </div>
   </section>
 
