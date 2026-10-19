@@ -1,0 +1,38 @@
+/* Shared top navigation: Work (dropdown) / About / Contact */
+.site-nav{display:flex;align-items:center;gap:28px;}
+.site-nav a,
+.site-nav .menu-toggle{
+  color:var(--muted);
+  text-decoration:none;
+  font:inherit;
+  font-size:0.92rem;
+  background:none;
+  border:0;
+  padding:0;
+  cursor:pointer;
+}
+.site-nav a:hover,
+.site-nav .menu-toggle:hover,
+.site-nav [aria-current="page"]{color:var(--accent);}
+.has-menu{position:relative;}
+.menu{
+  display:none;
+  position:absolute;
+  top:100%;
+  left:-14px;
+  min-width:160px;
+  padding:14px 0 8px;
+  z-index:20;
+}
+.menu::before{ /* background panel starts a little below the toggle, hover gap is bridged by padding */
+  content:'';position:absolute;inset:8px 0 0 0;background:var(--bg);border:1px solid var(--rule);border-radius:4px;z-index:-1;
+}
+.menu a{display:block;padding:8px 16px;white-space:nowrap;}
+.has-menu:hover .menu,
+.has-menu:focus-within .menu,
+.has-menu.open .menu{display:block;}
+@media (max-width:520px){
+  .site-nav{gap:18px;}
+  header{flex-wrap:wrap;gap:12px;}
+  .menu{left:auto;right:-10px;}
+}

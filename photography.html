@@ -194,18 +194,27 @@
     }
   }
 </style>
+<link rel="stylesheet" href="nav.css">
 </head>
 <body>
 <div class="wrap">
 
   <header>
     <a class="mark" href="index.html">Léa Sainz-Gootenberg</a>
-    <nav>
-      <a href="index.html">Home</a>
+    <nav class="site-nav" aria-label="Main">
+      <div class="has-menu">
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-haspopup="true" aria-current="page">Work <span aria-hidden="true">&#9662;</span></button>
+        <div class="menu">
+          <a href="radio.html">Radio</a>
+          <a href="writing.html">Writing</a>
+          <a href="artwork.html">Other Art</a>
+          <a href="photography.html" aria-current="page">Photography</a>
+        </div>
+      </div>
+      <a href="about.html">About</a>
+      <a href="mailto:lsainzgootenberg@gmail.com">Contact</a>
     </nav>
   </header>
-
-  <a class="back-link" href="index.html">&larr; Back to all categories</a>
 
   <h1 class="title">Photography</h1>
 
@@ -332,5 +341,6 @@
     });
   });
 </script>
+<script src="nav.js"></script>
 </body>
 </html>
