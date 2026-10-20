@@ -27,7 +27,7 @@
   }
   a{color:var(--text);}
   .wrap{
-    max-width:1000px;
+    max-width:1200px;
     margin:0 auto;
     padding:0 24px;
   }
@@ -67,47 +67,86 @@
     font-weight:500;
     font-size:clamp(2rem,5vw,2.8rem);
     margin-top:24px;
+    margin-bottom:8px;
   }
 
-  .piece{
-    display:grid;
-    grid-template-columns:64px 1fr;
-    gap:20px;
-    padding:24px 0;
+  /* Sidebar + gallery layout */
+  .writing-layout{
+    display:flex;
+    gap:56px;
+    margin-top:32px;
+    align-items:flex-start;
+  }
+
+  .writing-sidebar{
+    width:200px;
+    flex-shrink:0;
+    position:sticky;
+    top:32px;
+  }
+  .writing-sidebar ul{
+    list-style:none;
+  }
+  .writing-sidebar li{
     border-top:1px solid var(--rule);
   }
-  .piece:first-child{border-top:none;margin-top:40px;}
-  .piece-freq{
-    font-family:'Newsreader',serif;
-    font-style:italic;
-    color:var(--muted);
+  .writing-sidebar li:first-child{
+    border-top:none;
+  }
+  .writing-sidebar button{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    font-family:'IBM Plex Sans',sans-serif;
     font-size:0.95rem;
-    padding-top:2px;
+    color:var(--muted);
+    padding:14px 0;
+    cursor:pointer;
   }
-  .piece h3{
-    font-family:'Newsreader',serif;
-    font-weight:500;
-    font-size:1.25rem;
-    margin-bottom:6px;
-  }
-  .piece h3 a{
-    text-decoration:none;
+  .writing-sidebar button:hover{
     color:var(--text);
   }
-  .piece h3 a:hover{color:var(--accent);}
-  .piece .role{
+  .writing-sidebar button.active{
     color:var(--accent);
-    font-size:0.85rem;
+    font-weight:500;
+  }
+
+  .writing-main{
+    flex:1;
+    min-width:0;
+  }
+
+  .essay-panel{
+    display:none;
+  }
+  .essay-panel.active{
+    display:block;
+  }
+
+  .essay-head{
+    max-width:90ch;
+    margin-bottom:36px;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--rule);
+  }
+  .essay-head h2{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:1.6rem;
     margin-bottom:10px;
   }
-  .piece p{
+  .essay-head p{
     color:var(--muted);
-    font-size:0.96rem;
-    max-width:56ch;
+    font-size:0.97rem;
+  }
+  .essay-head .placeholder-note{
+    font-style:italic;
+    color:#a8b0b6;
   }
 
   .placeholder-note{
-    margin-top:40px;
     font-style:italic;
     color:#a8b0b6;
   }
@@ -116,12 +155,76 @@
     padding:48px 0 48px;
     color:var(--muted);
     font-size:0.82rem;
-    margin-top:40px;
+    margin-top:56px;
   }
 
-  @media (max-width:520px){
-    .piece{grid-template-columns:44px 1fr;}
+  @media (max-width:760px){
+    .writing-layout{
+      flex-direction:column;
+      gap:28px;
+    }
+    .writing-sidebar{
+      width:100%;
+      position:static;
+      overflow-x:auto;
+    }
+    .writing-sidebar ul{
+      display:flex;
+      gap:20px;
+    }
+    .writing-sidebar li{
+      border-top:none;
+      white-space:nowrap;
+    }
+    .writing-sidebar button{
+      padding:6px 0;
+      width:auto;
+    }
   }
+
+  .essay-head p.sub{font-style:italic;color:var(--muted);font-size:0.95rem;}
+  .essay-body{max-width:68ch;}
+  .essay-body p{
+    font-family:'Newsreader',serif;
+    font-size:1.15rem;
+    line-height:1.75;
+    margin-bottom:1.2em;
+  }
+  .essay-body p.track{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-style:italic;
+    font-size:0.88rem;
+    line-height:1.5;
+    color:var(--muted);
+    border-left:2px solid var(--accent);
+    padding-left:12px;
+    margin:2.2em 0 1.2em;
+  }
+  .essay-body p.sep{
+    text-align:center;
+    color:var(--muted);
+    letter-spacing:0.3em;
+    margin:1.6em 0;
+  }
+  .essay-body h3{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:1.2rem;
+    margin:2.4em 0 1em;
+    padding-top:1.4em;
+    border-top:1px solid var(--rule);
+  }
+  .essay-body p.bib{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:0.88rem;
+    line-height:1.6;
+    color:var(--muted);
+    padding-left:1.5em;
+    text-indent:-1.5em;
+    margin-bottom:0.8em;
+  }
+  .essay-body p.bib a{color:var(--muted);}
+  .essay-body p.bib a:hover{color:var(--accent);}
 </style>
 <link rel="stylesheet" href="nav.css">
 </head>
@@ -147,12 +250,73 @@
 
   <h1 class="title">Writing</h1>
 
-  <div class="piece">
-    <div class="piece-freq">01</div>
-    <div>
-      <h3>Ancient Americas, Appropriated</h3>
-      <div class="role">Essay Contributor &middot; Winter 2024</div>
-      <p>An essay on Tatiana Parcero's <em>Cartograf&iacute;a Interior #35</em>, published as part of a UIC digital humanities project on Pre-Columbian art.</p>
+  <div class="writing-layout">
+    <nav class="writing-sidebar">
+      <ul>
+        <li><button class="proj-btn active" data-target="piece-chicago">A Chicago Geography of Sound</button></li>
+        <li><button class="proj-btn" data-target="piece-redhook">Industries of Red Hook</button></li>
+      </ul>
+    </nav>
+
+    <div class="writing-main">
+
+      <div class="essay-panel active" id="piece-chicago">
+        <div class="essay-head">
+          <h2>A Chicago Geography of Sound</h2>
+          <p class="sub">An essay with an accompanying playlist; track titles are set in italics throughout.</p>
+        </div>
+        <div class="essay-body">
+          <p class="track">Midway, Scott Tuma, 2001</p>
+          <p>Searching for music is meant to be a public endeavor. It should start with hearing a distant kind of bass line, from the street below, and running downstairs to see what all the rattling is about. Sometimes if you’ve only slept a few hours, you’d believe you were descending into some kind of madness. It could just be someone’s speaker in the next apartment over. Or car tires rolling on the crackled asphalt.</p>
+          <p>On 55th Street, it’s cars the whole way down. The storefronts are conglomerated into little shopping centers, and then emptiness. Another stretch of blocks, a few more stores. Time stretches out farther along these streets, each block as its own island. On 55th, I’m looking for a place on the map that doesn’t exist anymore. Somehow, putting the address into Google Maps yields a result. <em>1503 E 55th Street. </em>The red pin on Google Maps lies on top of someone’s front yard on Harper Avenue.</p>
+          <p>I watched a woman taking out the trash where Charlie Parker had his last Chicago performance. I couldn’t see her face over the shrubbery in her yard. Her windows were minuscule, and her whole life seemed contained. Each yard is the same square shape, with slight variations on the shrubs and plants and black fences circling them. Sonny Rollins, Max Roach, and Thelonious Monk were in her yard when it was the Bee Hive nightclub, before it closed in 1956.</p>
+          <p class="track">Cherokee – Live at the Bee Hive, Clifford Brown and Max Roach, 1979</p>
+          <p>Sax and trumpet sounds have been long replaced by the quaint Hyde Park shopping center. The whole street has a dull and muted tone to it. Grey and beige bricks repeat and loop down 55th and 56th. It all looks washed out, with the exception of a few red-orange trees. The wind from the lake pushes bitterly on my face when I cycle west down 57th, so I walk instead.</p>
+          <p>When I walk past the Midway, my mind starts to play tricks on me. Blank spaces where buildings should stand appear like words cut out of sentences. There’s a wooden fence that stands on the edge of a couple of blocks. The choppiness is familiar, but entirely incoherent, with entire sections cut away and wood panels falling off of it. It doesn’t circle around the blocks completely, just covering enough to appear like an enclosure to passing cars. It holds in nothing but disparate patches of brown and green grasses. In the summers, it grows long and begins to look like a cornfield is sprouting on a city block.</p>
+          <p>Walking Chicago requires a speculative mode of looking, a kind of attention to details in negative space. The blank spaces stand in for question marks. Who might have lived here? What did the streets look like? Why did they leave? Sometimes, you even see a block with only one or two houses still standing. The lots still have fences, as if they are waiting for someone to return. The unpainted brick on the sides of houses that still stand were never supposed to be exposed, a spectral underbelly.</p>
+          <p class="sep" aria-hidden="true">&hellip;</p>
+          <p class="track">Mercy, Mercy, Mercy! Live at “The Club”, Cannonball Adderley Quintet, 1967</p>
+          <p>The section of 55th Street by the Beehive Lounge had a strange progression, a lifetime marked by distinctive bursts of disinvestment, intoxication, and debate. As far back as the late 19th century, it was the only place where liquor was allowed in the area, so it became the site for bars and taverns to proliferate. Persisting through prohibition, the street maintained itself as the central gathering space for the neighborhood. In the 1930s and 40s, illicit venues and speakeasies turned into established nightclubs.</p>
+          <p>These were the two decades when jazz thrived under restrictive conditions. Racial covenants created harsh boundaries between areas and limited movement. Entertainment and retail were concentrated along a few major streets west of Washington Park, all the way from Woodlawn up to the south loop. Clubs like the De Lisa and the Rhumboogie operated around the clock with a variety show format, non-stop entertainment by singers, dancers, and in-house bands. In the wave of a second Great Migration to Chicago, Black musicians like Sun Ra arrived in Chicago and found work in the nightclubs on Garfield, 55th, and 63rd.</p>
+          <p>The De Lisa closed in 1958, later reopening and then closing again. There’s no record of how it became an empty lot. In Hyde Park, the demolition of the Bee Hive and other jazz venues was a more intentional form of destruction. Almost the entire stretch of 55th Street from University to the railroad tracks on S. Lake Park Ave was demolished in a decade-long effort by the Southeast Chicago Commission to revitalize the city and start from scratch. A coalition of institutions, including the University of Chicago, created the basis for the commissions and legislature that displaced over 81,000 people across Chicago.</p>
+          <p class="sep" aria-hidden="true">&hellip;</p>
+          <p class="track">Thème De Yoyo, Art Ensemble of Chicago, 1970 (recorded for the French film, Les Stances à Sophie)</p>
+          <p>As the 1960s marked an unprecedented transformation of urban space for thousands of Black Chicagoans, sound was also changing radically. Earlier decades had been dominated by big-band orchestras, complete with four sections of trombonists, saxophonists, trumpeters, and percussionists. By the late 1950s, it was the age of the artist. Dancing music had given in to a new idea – listening.</p>
+          <p>While countless South Side jazz venues closed in the 1960s, an independent group in the South Side music scene was building an emerging coalition of Black musicians. It was to be called the Association for the Advancement of Creative Musicians, or the AACM. Started by Muhal Richard Abrams and Jodie Christian, it was first and foremost a space for budding jazz artists to develop their practice on their own terms, but also a place for honest community.</p>
+          <p>The AACM created a philosophy, rooting their practice first and foremost on improvisation and free thinking. The workshops and music school would provide classes for students, while more established members would mentor budding musicians. They somehow succeeded in nourishing both the artist and the collective.</p>
+          <p>The music that emerged from these intersecting projects was wildly unconventional. It zigzagged through genres, mixing bells, whistles, classical, funk, reggae, off-kilter rhythms, and unknown metal objects. Parallel to the visual art collectives of OBAC and AfriCOBRA, the AACM was interested in creating an expansive aesthetic that reflected the material knowledge and history of its members.</p>
+          <p>Like the colors and the indescribable magic of AfriCOBRA’s aesthetics, AACM’s music is rooted in the singularity and the tenacity of each artist, but undeniably formed through a persistent belief in exchange. There are echoes of different times and musical movements, but nothing is completely abstract. Bells and cymbals crash into seemingly stable rhythms as bass lines move up and down. Trills blanket over each other. Melodies are sung low and high, coming up out of nothing but a soft percussion. Brief pauses give rise to a deep sense of reflection. Forgetting genre and forgoing definition, the avant-garde of Chicago still refuses to pin itself down.</p>
+          <p>Many of the musicians who emerged out of the AACM tradition have gone on to have expansive careers in New York and Europe. Yet Chicago remained the incubator for their art. The space for their jazz was unlimited. Never housed in just one building, it travelled from one scene to the next. Free concerts and performances across the city. Free workshops for young kids and artists. Free, both in movement and in expression.</p>
+          <p class="track">W-138 (Opus 51), Anthony Braxton, 1976</p>
+          <p class="sep" aria-hidden="true">&hellip;</p>
+          <p>On the Midway Plaisance every fall, the Hyde Park Jazz Festival appears. It’s a stronghold for jazz, a tangible breathing form that appears along the small hills of the Midway and within the folding chairs and blankets. The music merges with the space. The Midway no longer looks like a road, but becomes its own block entirely. Jazz trios, trumpeters, blue saxophones, drummers, food trucks, jewelry stands, incense burning, dancing, sitting.</p>
+          <p>This space doesn’t feel temporary. The neighbors that stop by to sit, listen, or dance have been taking in jazz for decades. Some of them have heard stories from 63rd Street nightclubs or 55th Street bars. Others used to visit 504 E 75th St to hear Von Freeman and his band play at the New Apartment Lounge. Jam sessions on Tuesdays took over the space from midnight to 3 AM. Some head down to the Logan Center on Wednesday nights, and others flock to the Jazz Jams run by the Southside Jazz Coalition. These are places where sound was carried on from one person to another, a language of exchange. The music becomes a travelogue. It rifles through memories of places, or becomes a way of living on through sound itself.</p>
+          <p class="sep" aria-hidden="true">&hellip;</p>
+          <h3>Bibliography</h3>
+          <p class="bib">Hannah, Edgar and For. &ldquo;A Sonic Monument: &lsquo;Vonski&rsquo; and the New Apartment Lounge are Gone. but Mike Allemana&rsquo;s &lsquo;Vonology&rsquo; Declares that His Spirit is here to Stay.&rdquo; <em>Chicago Tribune,</em> May 23, 2022.</p>
+          <p class="bib">Moore, Marcus J. &ldquo;5 Minutes That Will Make You Love the A.A.C.M.&rdquo; Arts. <em>The New York Times</em>, December 3, 2025. <a href="https://www.nytimes.com/2025/12/03/arts/music/association-advancement-creative-musicians-jazz.html">nytimes.com</a></p>
+          <p class="bib">Scruggs, T M. &ldquo;&lsquo;Come on in North Side, You&rsquo;re Just in Time&rsquo;: Musical-Verbal Performance and the Negotiation of Ethnically Segregated Social Space.&rdquo; <em>Current Musicology Special Issue: Jazz Studies</em> 72 (2001).</p>
+          <p class="bib">Sites, William. <em>Sun Ra&rsquo;s Chicago: Afrofuturism &amp; the City</em>. Chicago: The University of Chicago Press, 2020.</p>
+          <p class="bib">Sorrell, Robert. &ldquo;The Audacious Archive of the AACM.&rdquo; <em>South Side Weekly</em>, January 27, 2015. <a href="https://southsideweekly.com/the-audacious-archive-of-the-aacm/">southsideweekly.com</a></p>
+        </div>
+      </div>
+
+      <div class="essay-panel" id="piece-redhook">
+        <div class="essay-head">
+          <h2>Notes on the Industries of Red Hook, Brooklyn</h2>
+        </div>
+        <div class="essay-body">
+          <p>Red Hook once moved New York. In the west, the two rivers converge into a bay. Jetting out into the harbor, the neighborhood marks the end and the beginning of waterways, a singular point of convergence that was primed for the movement of people and commerce. Ports began dotting the curved cape after the Civil War, and the construction of the Erie Basin cemented its industrial futures.</p>
+          <p>Today, the Brooklyn-Queens Expressway forms an unusual border of noise and traffic around the neighborhood. Red Hook, unlike its neighbors to the north and east, remains as an anomaly in an otherwise gentrified part of Brooklyn. There are no trains that go to Red Hook. Without the guaranteed explosion of tourists, tenants, real estate agents, Red Hook’s isolation has yielded a bizarre time capsule.</p>
+          <p>As the asphalt that covers most of Brooklyn becomes rough cobblestone, row houses with iron fences give way to a sea of factory buildings. Beyond this, masts and cranes raze the sky above the shipping buildings. In the nineteenth century, Norwegian, Puerto Rican, Italian, and Irish immigrants staked their claim to these streets, moving in and out as the city underwent demographic changes. Now, Red Hook’s warehouses, shipping facilities, and shipping ports are a case study in retrofitting. Visible changes in the neighborhood come gradually; they aren’t marked by the construction of high-rises or the calibrated scrapping of the factory buildings that line the ports. Instead, Red Hook’s changes are characterized by the reappropriation of its industrial bones. The factories have taken on new tenants. Artist studios, seaside restaurants, breweries, and the occasional superstore. In 2008, the Ikea craze of New York took full swing with the first store opening in Red Hook. Families poured into the parking lot from all over New York, and it was considered to be the kind of investment that would bring jobs and local opportunity, particularly in an area with uneven economic investment.</p>
+          <p>As sociologist Sharon Zukin remarks, longtime neighborhood businesses found themselves adapting to a new class of visitors. By the early 2000s, Red Hook food vendors, who once served food for their families and friends at soccer games, had transformed into entrepreneurs both due to an increasing demand from non-Latino foodies and through the struggle to keep up with the city government’s bureaucratic regulations. Vendors, in constant renegotiation for their right to public space, attempt to prove their permanent place through increasing their profits and appealing toward an obsession with ‘authenticity’. Turning themselves into marketable entrepreneurs on a small scale, Red Hook now symbolized the obsessive tendency to commodify the industrial and authentic.</p>
+          <p>Six years after the COVID-19 pandemic, many of Red Hook’s factories are now in the hands of investors and larger companies. Tesla and Amazon have joined the growing number of companies who house warehouses and urban fulfillment centers in the area. This unregulated urban expansion of fulfillment centers has led to an increased number of vehicle crashes, congestion, and air quality problems. Amazon vehicles clog Columbia Street and the underpass to Carroll Gardens, and have led to workplace injury rates more than triple the national average for private companies. Yet, there’s still not a coordinating group that oversees this large-scale delivery process. For communities who already suffer from poor air quality, these facilities also pose potential harm in furthering Red Hook’s pollution.</p>
+          <p>The grain silos are now abandoned, etched with the color of dark smoke. To the east, cross-shaped red brick apartment buildings go for blocks, until the blockade of the expressway pushes up against them. The Red Hook houses, which were built in the early 1930s, have separated the neighborhood between a working class side and relative newcomers – wealthy residents drawn both by the relative isolation and ample space the neighborhood provides.</p>
+          <p>Red Hook’s allure is now cemented into state law. The announcement of the 122-acre, $3.5 billion Brooklyn Marine Terminal development plan, which will span all the way across the bay, promises a reactivation of Red Hook’s previous life as an industrial powerhouse. As a modern harbor, the project hopes to expand previously used maritime routes as an alternative to truck freight to reduce congestion.</p>
+          <p>Even as the Brooklyn Marine Terminal makes these promises, the battle for public space in Red Hook has taken center stage since the project’s announcement. At a series of open forums and city council meetings, neighbors and council members repeatedly aired their pushbacks on both how the plan ignores community input, and the risks of possible displacement with the addition of luxury housing units on the waterfront. It remains to be seen if Red Hook, which has been the site of reevaluation and popular reimagination, will be pushed toward a more livable reality.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -161,6 +325,22 @@
   </footer>
 
 </div>
+
+<script>
+  function showPiece(id){
+    var panel=document.getElementById(id);
+    if(!panel) return;
+    document.querySelectorAll('.proj-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.target===id); });
+    document.querySelectorAll('.essay-panel').forEach(function(p){ p.classList.toggle('active', p===panel); });
+  }
+  document.querySelectorAll('.proj-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      showPiece(btn.dataset.target);
+      history.replaceState(null,'','#'+btn.dataset.target);
+    });
+  });
+  if(location.hash) showPiece(location.hash.slice(1));
+</script>
 <script src="nav.js"></script>
 </body>
 </html>
